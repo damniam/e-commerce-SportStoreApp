@@ -52,14 +52,14 @@ module.exports = function () {
         price: 30,
       },
       {
-        id: 7,
+        id: 8,
         name: "Chess board",
         category: "Chess",
         description: "Wooden chess board",
         price: 95,
       },
       {
-        id: 7,
+        id: 9,
         name: "Bling bling King",
         category: "Chess",
         description: "Gold-plated, diamond-studded king",
