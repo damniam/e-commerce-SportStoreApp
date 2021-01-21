@@ -1,7 +1,7 @@
 module.exports = function () {
   return {
     categories: ["Watersports", "Football", "Chess"],
-    product: [
+    products: [
       {
         id: 1,
         name: "Kayak",
