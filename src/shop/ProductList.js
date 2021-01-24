@@ -19,7 +19,7 @@ export class ProductList extends Component {
             className="btn btn-success btn-sm float-right"
             onClick={() => this.props.addToCart(item)}
           >
-            Add to cart
+            Add To Cart
           </button>
         </div>
       </div>
