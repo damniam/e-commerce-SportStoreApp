@@ -1,3 +1,4 @@
+import { act } from "@testing-library/react";
 import { ActionTypes } from "./Types";
 
 export const ShopReducer = (storeData, action) => {
@@ -6,7 +7,13 @@ export const ShopReducer = (storeData, action) => {
       return {
         ...storeData,
         [action.payload.dataType]: action.payload.data,
+        [`$(action.payload.dataType)_total`]: action.payload.total,
+        [`$(action.payload.dataType)_params`]: action.payload.params,
       };
+    case ActionTypes.DATA_SET_SORT_PAGESIZE:
+      return { ...storeData, pageSize: action.payload };
+    case ActionTypes.DATA_SET_SORT_PROPERTY:
+      return { ...storeData, sortKey: action.payload };
     default:
       return storeData || {};
   }
