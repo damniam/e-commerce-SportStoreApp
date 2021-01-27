@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { PaginationButtons } from "./PaginationButtons";
 
-export class PaginationControls extends Component {
+export class PaginationControl extends Component {
   constructor(props) {
     super(props);
     this.pageSizes = this.props.sizes || [5, 10, 25, 100];

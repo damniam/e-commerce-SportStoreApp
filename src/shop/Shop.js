@@ -3,9 +3,9 @@ import { CategoryNavigation } from "./CategoryNavigation";
 import { ProductList } from "./ProductList";
 import { CartSummary } from "./CartSummary";
 import { ProductPageConnector } from "./ProductPageConnector";
-import { PaginationControls } from "../PaginationControl";
+import { PaginationControl } from "../PaginationControl";
 
-const ProductPages = ProductPageConnector(PaginationControls);
+const ProductPages = ProductPageConnector(PaginationControl);
 
 export class Shop extends Component {
   handleAddToCart = (...args) => {

@@ -3,10 +3,10 @@ import { RestUrls } from "./Urls";
 
 export class RestDataSource {
   constructor(err_handler) {
-    this.err_handler = err_handler || {};
+    this.error_handler = err_handler || (() => {});
   }
 
-  GetData = async (dataType, params) =>
+  GetData = (dataType, params) =>
     this.SendRequest("get", RestUrls[dataType], params);
 
   StoreData = (dataType, data) =>

@@ -1,11 +1,13 @@
 import { DataTypes } from "./Types";
 
 const protocol = "http";
-const host = "localhost";
+const hostname = "localhost";
 const port = 3500;
 
 export const RestUrls = {
-  [DataTypes.PRODUCTS]: `${protocol}://${host}:${port}/api/products`,
-  [DataTypes.CATAGORIES]: `${protocol}://${host}:${port}/api/categories`,
-  [DataTypes.ORDERS]: `${protocol}://${host}:${port}/api/orders`,
+  [DataTypes.PRODUCTS]: `${protocol}://${hostname}:${port}/api/products`,
+  [DataTypes.CATEGORIES]: `${protocol}://${hostname}:${port}/api/categories`,
+  [DataTypes.ORDERS]: `${protocol}://${hostname}:${port}/api/orders`,
 };
+
+export const GraphQlUrl = `${protocol}://${hostname}:${port}/graphql`;

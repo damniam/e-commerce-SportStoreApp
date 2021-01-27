@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ValidatedError } from "../form/ValidatedError";
+import { ValidationError } from "./ValidationError";
 import { GetMessages } from "./ValidationMessages";
 
 export class ValidatedForm extends Component {
@@ -8,16 +8,16 @@ export class ValidatedForm extends Component {
     this.state = {
       validationErrors: {},
     };
-    this.formElement = {};
+    this.formElements = {};
   }
 
   handleSubmit = () => {
     this.setState(
       (state) => {
         const newState = { ...state, validationErrors: {} };
-        Object.values(this.formElement).forEach((element) => {
-          if (!element.checkValidity()) {
-            newState.validationErrors[element.name] = GetMessages(element);
+        Object.values(this.formElements).forEach((elem) => {
+          if (!elem.checkValidity()) {
+            newState.validationErrors[elem.name] = GetMessages(elem);
           }
         });
         return newState;
@@ -25,8 +25,8 @@ export class ValidatedForm extends Component {
       () => {
         if (Object.keys(this.state.validationErrors).length === 0) {
           const data = Object.assign(
-            ...Object.entries(this.formElement).map((element) => ({
-              [element[0]]: element[1].value,
+            ...Object.entries(this.formElements).map((e) => ({
+              [e[0]]: e[1].value,
             }))
           );
           this.props.submitCallback(data);
@@ -37,7 +37,7 @@ export class ValidatedForm extends Component {
 
   registerRef = (element) => {
     if (element !== null) {
-      this.formElement[element.name] = element;
+      this.formElements[element.name] = element;
     }
   };
 
@@ -45,14 +45,14 @@ export class ValidatedForm extends Component {
     const name = modelItem.name || modelItem.label.toLowerCase();
     return (
       <div className="form-group" key={modelItem.label}>
-        <label>{modelItem.name}</label>
-        <ValidatedError errors={this.state.validationErrors[name]} />
+        <label>{modelItem.label}</label>
+        <ValidationError errors={this.state.validationErrors[name]} />
         <input
           className="form-control"
           name={name}
           ref={this.registerRef}
-          {...this.props.defaultAttributes}
-          {...modelItem.attribute}
+          {...this.props.defaultAttrs}
+          {...modelItem.attrs}
         />
       </div>
     );
@@ -61,7 +61,7 @@ export class ValidatedForm extends Component {
   render() {
     return (
       <React.Fragment>
-        {this.props.formElement.map((m) => this.renderElement(m))}
+        {this.props.formModel.map((m) => this.renderElement(m))}
         <div className="text-center">
           <button
             className="btn btn-secondary m-1"
@@ -77,5 +77,3 @@ export class ValidatedForm extends Component {
     );
   }
 }
-
-export default ValidatedForm;

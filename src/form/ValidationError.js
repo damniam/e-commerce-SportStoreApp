@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class ValidatedError extends Component {
+export class ValidationError extends Component {
   render() {
     if (this.props.errors) {
       return this.props.errors.map((err) => (
@@ -9,7 +9,6 @@ export class ValidatedError extends Component {
         </h6>
       ));
     }
+    return null;
   }
 }
-
-export default ValidatedError;
